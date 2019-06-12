@@ -96,7 +96,7 @@ def predict():
     sonuc = ""
 
     for i in top_k:
-        sonuc = sonuc + (template.format(labels[i], results[i]))
+        sonuc = labels[i]
         break
 
     return sonuc
