@@ -27,8 +27,7 @@ def load_graph(model_file):
 
   return graph
 
-def read_tensor_from_image_file(file_name, input_height=299, input_width=299,
-				input_mean=0, input_std=255):
+def read_tensor_from_image_file(file_name, input_height=299, input_width=299, input_mean=0, input_std=255):
   input_name = "file_reader"
   output_name = "normalized"
   file_reader = tf.read_file(file_name, input_name)
@@ -110,12 +109,10 @@ def predict():
 
 @app.route('/')
 def index():
-	return render_template("index.html")
+  return render_template("index.html")
 
 
 if __name__ == "__main__":
-	print("START FLASK")
-	#load_model()
-
-	port = int(os.environ.get('PORT', 5000))
-	app.run(host='127.0.0.1', port=port)
+  print("START FLASK")
+  port = int(os.environ.get('PORT', 5000))
+  app.run(host='127.0.0.1', port=port)
