@@ -70,7 +70,7 @@ app = Flask(__name__)
 def predict():
   if request.method == "POST" and request.files['image']:
     image = flask.request.files["image"]
-    file.save(os.path.join('./pictures/', image.filename))
+    #file.save(os.path.join('./pictures/', image.filename))
     file_name = os.path.realpath(image.filename)
 
     print(file_name)
