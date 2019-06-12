@@ -97,7 +97,7 @@ def predict():
 
     template = "{} (score={:0.5f})"
     for i in top_k:
-        sonuc.append(template.format(labels[i], results[i]))
+        sonuc = sonuc + (template.format(labels[i], results[i]))
 
     return sonuc
 
