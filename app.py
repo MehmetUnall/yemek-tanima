@@ -74,40 +74,39 @@ app = Flask(__name__)
 
 @app.route("/predict", methods=["POST"])
 def predict():
-	# ensure an image was properly uploaded to our endpoint
-	if request.method == "POST" and request.files['image']:
-		image = flask.request.files["image"]
-        imagepath = secure_filename(image.filename)
-        file.save(os.path.join('./pictures/', imagepath))
-        file_name = os.path.realpath(image.filename)
+  if request.method == "POST" and request.files['image']:
+    image = flask.request.files["image"]
+    imagepath = secure_filename(image.filename)
+    file.save(os.path.join('./pictures/', imagepath))
+    file_name = os.path.realpath(image.filename)
 
 
-        graph = load_graph(model_file)
-        t = read_tensor_from_image_file(file_name,
-                                        input_height=input_height,
-                                        input_width=input_width,
-                                        input_mean=input_mean,
-                                        input_std=input_std)
+    graph = load_graph(model_file)
+    t = read_tensor_from_image_file(file_name,
+                                    input_height=input_height,
+                                    input_width=input_width,
+                                    input_mean=input_mean,
+                                    input_std=input_std)
 
-        input_name = "import/" + input_layer
-        output_name = "import/" + output_layer
-        input_operation = graph.get_operation_by_name(input_name);
-        output_operation = graph.get_operation_by_name(output_name);
+    input_name = "import/" + input_layer
+    output_name = "import/" + output_layer
+    input_operation = graph.get_operation_by_name(input_name);
+    output_operation = graph.get_operation_by_name(output_name);
 
-        with tf.Session(graph=graph) as sess:
-            start = time.time()
-            results = sess.run(output_operation.outputs[0],
-                               {input_operation.outputs[0]: t})
-            end = time.time()
-        results = np.squeeze(results)
+    with tf.Session(graph=graph) as sess:
+        start = time.time()
+        results = sess.run(output_operation.outputs[0],
+                           {input_operation.outputs[0]: t})
+        end = time.time()
+    results = np.squeeze(results)
 
-        top_k = results.argsort()[-5:][::-1]
-        labels = load_labels(label_file)
+    top_k = results.argsort()[-5:][::-1]
+    labels = load_labels(label_file)
 
-        print('\nEvaluation time (1-image): {:.3f}s\n'.format(end - start))
-        template = "{} (score={:0.5f})"
-        for i in top_k:
-            print(template.format(labels[i], results[i]))
+    print('\nEvaluation time (1-image): {:.3f}s\n'.format(end - start))
+    template = "{} (score={:0.5f})"
+    for i in top_k:
+        print(template.format(labels[i], results[i]))
 
 @app.route('/')
 def index():
