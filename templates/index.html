@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Evrişimsel Sinir Ağları (Convolutional Neural Networks) Kullanarak Bitki Tanıma</title>
+	<title>Evrişimsel Sinir Ağları (Convolutional Neural Networks) Kullanarak Yemek Tanıma</title>
 	<meta name="theme-color" content="#563d7c">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -14,14 +14,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<h1>Bitki Tanıma Projesi</h1>
+				<h1>Yemek Tanıma Projesi</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-6">
 				<img id="img-preview" src="#" alt="preview image" class="img-thumbnail" style="max-height:400px; display:none;">
 				<br/>
-				<form id="upload-file" method="post" enctype="multipart/form-data">
+				<form id="upload-file" method="post" enctype="multipart/form-data" action="/predict">
 					<div class="form-group">
 						<label for="InputFile">Resim dosyası seçiniz:</label>
 						<input name="image" type="file" class="form-control-file" id="InputFile" accept=".jpg, .jpeg, .png">
@@ -43,9 +43,9 @@
 				<br>
 				<h3>API Kullanım</h3>
 				<h4>curl</h4>
-				<code>curl -X POST -F image=@resim1.jpg 'https://bitki-tanima-projesi.herokuapp.com/predict'</code>
+				<code>curl -X POST -F image=@resim1.jpg 'https://yemek-tanima-projesi.herokuapp.com/predict'</code>
 				<h4>API Cevap</h4>
-				<code>{"class":"1.0","class_str":"Lale","success":true}</code>
+				<code>Ex: ...</code>
 			</div>
 		</div>
 
