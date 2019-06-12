@@ -70,7 +70,7 @@ app = Flask(__name__)
 def predict():
   if request.method == "POST" and request.files['image']:
     file = flask.request.files["image"]
-    file.save('.', file.filename)
+    file.save(file.filename)
     file_name = file.filename
 
     graph = load_graph(model_file)
