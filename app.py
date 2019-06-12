@@ -93,13 +93,7 @@ def predict():
     top_k = results.argsort()[-5:][::-1]
     labels = load_labels(label_file)
 
-    sonuc = ""
-
-    template = "{} (score={:0.5f})"
-    for i in top_k:
-        sonuc = sonuc + (template.format(labels[i], results[i]))
-
-    return sonuc
+    return labels[0]
 
 
 @app.route('/')
