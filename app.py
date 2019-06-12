@@ -8,11 +8,6 @@ import time
 import tensorflow as tf
 
 from PIL import Image
-
-import absolute_import
-import division
-import print_function
-#from __future__ import print_function
 from flask import Flask, render_template,request, jsonify, send_from_directory
 
 
