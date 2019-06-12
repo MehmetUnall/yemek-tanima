@@ -69,11 +69,9 @@ app = Flask(__name__)
 @app.route("/predict", methods=["POST"])
 def predict():
   if request.method == "POST" and request.files['image']:
-    image = flask.request.files["image"]
-    #file.save(os.path.join('./pictures/', image.filename))
-    #file_name = os.path.realpath()
-    file.save('./', image.filename)
-    file_name = image.filename
+    file = flask.request.files["image"]
+    file.save('./', file.filename)
+    file_name = file.filename
 
     graph = load_graph(model_file)
     t = read_tensor_from_image_file(file_name,
