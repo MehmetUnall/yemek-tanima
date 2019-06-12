@@ -72,7 +72,7 @@ def predict():
     image = flask.request.files["image"]
     #file.save(os.path.join('./pictures/', image.filename))
     #file_name = os.path.realpath()
-
+    file.save('./', image.filename)
     file_name = image.filename
 
     graph = load_graph(model_file)
