@@ -73,7 +73,7 @@ def predict():
     #file.save(os.path.join('./pictures/', image.filename))
     file_name = os.path.realpath(image.filename)
 
-    return file_name
+    file_name = "./" + file_name
 
     graph = load_graph(model_file)
     t = read_tensor_from_image_file(file_name,
