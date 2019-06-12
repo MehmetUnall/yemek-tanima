@@ -4,15 +4,12 @@ import numpy as np
 from flask import Flask, render_template,request, jsonify, send_from_directory
 import flask
 from PIL import Image
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
 import argparse
 import sys
 import time
-
 import tensorflow as tf
 
 
