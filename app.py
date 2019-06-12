@@ -1,8 +1,3 @@
-from PIL import Image
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from flask import Flask, render_template,request, jsonify, send_from_directory
 import io
 import os
 import numpy as np
@@ -11,6 +6,14 @@ import argparse
 import sys
 import time
 import tensorflow as tf
+
+from PIL import Image
+
+import absolute_import
+import division
+import print_function
+#from __future__ import print_function
+from flask import Flask, render_template,request, jsonify, send_from_directory
 
 
 def load_graph(model_file):
