@@ -1,0 +1,8 @@
+Flask
+gevent
+gunicorn
+numpy
+Image
+pillow
+tensorflow
+werkzeug
